@@ -1,3 +1,8 @@
+//Promises: A promise in Javascript is an object that represents the eventual result of an asyn operation either a success or a failure.
+
+//examples questions:-
+
+
 // create a promisifed version of fs.readFile
 const fs = require("fs");
 function fsReadFilePromisified(fileName, encoding) {
@@ -20,7 +25,7 @@ fsReadFilePromisified("a.txt", "utf-8")
         console.log("Error while reading the file");
     })
 
-    
+
 
     
 // Create a promisified version of setTimeout 
@@ -36,3 +41,23 @@ setTimeoutPromisified(1000)
     .then(function() {
         console.log("1 second has passed")
     })
+
+// create a promisified version of fs.writeFile
+function fsWriteFilePromisified(fileName, data) {
+    return new Promise(function(resolve, reject){
+        fs.writeFile(fileName, data, function(err) {
+            if(err){
+                reject(err);
+            }else {
+                resolve(data);
+            }
+        })
+    });
+}
+fsWriteFilePromisified("a.txt", "Hello")
+    .then(function(result) {
+        console.log(result);
+    })
+    .catch(function(err){
+        console.log(err);
+    });
