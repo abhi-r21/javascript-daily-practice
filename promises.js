@@ -41,6 +41,12 @@ setTimeoutPromisified(1000)
     .then(function() {
         console.log("1 second has passed")
     })
+    .catch(function(){
+        console.log("error while running the file")
+    })
+    .finally(function(){
+        console.log("finally either then or catch runs")
+    });
 
 // create a promisified version of fs.writeFile
 function fsWriteFilePromisified(fileName, data) {
